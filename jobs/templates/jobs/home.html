@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+{% load static %}  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Chip Edwards &#8226 Django Portfolio</title>
+
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'jobs/css/bootstrap.min.css' %}">
+    
+    <!-- Favicons -->
+<meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+  </head>
+  <body>
+  
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1>Chip Edwards &#8226 Django Portfolio</h1>
+      <p class="lead text-muted">I have over 20 years in the IT field as an IT manager. Since everyone is making the move to the web I thought I 
+        would pick up some new skills as a full stack developer using Apache, Django / Python, and MariaDB hosted in Azure.
+        <br> Here are a few Django projects I have been working on. I hope you enjoy them.
+      </p>
+  
+      <p>
+        <a href="mailto:chip@chip-edwards.com" class="btn btn-primary my-2">Drop me an E-mail</a>
+      </p>
+      <img src="{% static 'chip.jpg' %}" height=150></img>
+
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        {% for job in jobs.all %}
+        <div class="col-md-4">
+          <a href="{% url 'detail' job.id %}">
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" src="{{ job.image.url }}" height=250>
+              <div class="card-body">
+                <p class="card-text">{{ job.summary }}</p>
+              </div>
+            </div>
+         </a>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+</main>
+  </body>
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+  </div>
+</footer>
+<script src="{% static 'jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'popper.min.js' %}"></script>
+<script src="{% static 'jobs/js/bootstrap.min.js' %}"></script>
+
+</html>
